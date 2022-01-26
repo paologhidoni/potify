@@ -32,7 +32,7 @@ server.get("/sign-up", signUp.get);
 // server.post("/sign-up", signUp.post);
 
 // sign-in
-// server.get("/sign-in", signIn.get);
+server.get("/sign-in", signIn.get);
 // server.post("/sign-in", signIn.post);
 
 // log-out
