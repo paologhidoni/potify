@@ -26,8 +26,8 @@ const get = (request, response) => {
   
       <form action="/sign-up" method="POST">
   
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
+        <label for="signup_username">Username</label>
+        <input type="text" name="username" id="signup_username">
   
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
