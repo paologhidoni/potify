@@ -1,4 +1,7 @@
 const model = require("../database/model.js");
+const auth = require("../auth.js");
+
+
 
 const get = (request, response) => {
 
@@ -49,5 +52,15 @@ const get = (request, response) => {
   response.send(html);
 }
 
-module.exports = { get };
+const post = (request, response) => {
+  const { username, email, password } = request.body;
+
+  console.log(username, email, password);
+
+  auth.createAuthUser(username, email, password);
+
+
+}
+
+module.exports = { get, post };
 

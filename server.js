@@ -29,7 +29,7 @@ server.get("/", home.get);
 
 // sign-up
 server.get("/sign-up", signUp.get);
-// server.post("/sign-up", signUp.post);
+server.post("/sign-up", signUp.post);
 
 // sign-in
 server.get("/sign-in", signIn.get);

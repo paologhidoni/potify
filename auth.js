@@ -10,6 +10,16 @@ const COOKIE_OPTIONS = {
 };
 
 
+// 02 step -create user
+const createAuthUser = (username, email, password) => {
+
+  return bcrypt.hash(password, 10)
+  .then((hashedPassword) => model.createModelUser(username, email, hashedPassword));
+
+};
+
+
+
 // // PART TWO: SIGNING UP - STEP 1
 // function createUser(email, password, name) {
 //   return bcrypt.hash(password, 10) // encrypts password
@@ -46,5 +56,4 @@ const COOKIE_OPTIONS = {
 //   })
 // }
 
-// module.exports = { COOKIE_OPTIONS, createUser, saveUserSession, verifyUser };
-// ```
+module.exports = { COOKIE_OPTIONS, createAuthUser };
