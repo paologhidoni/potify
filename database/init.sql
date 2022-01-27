@@ -41,7 +41,7 @@ INSERT INTO posts (id, username, post, imgSrc, userEmail) VALUES (
   'mario@gmail.com'
 );
 
--- INSERT INTO posts (id, username, post, imgSrc, useremail) VALUES (
+-- INSERT INTO posts (id, username, post, imgSrc, userEmail) VALUES (
 --   2,
 --   'Mario',
 --   'Egg',
