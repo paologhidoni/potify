@@ -1,7 +1,7 @@
 const model = require("../database/model.js");
 
 const get = (request, response) => {
-  
+
   model
     .getUserPosts()
     .then((result) => {
@@ -63,6 +63,7 @@ const get = (request, response) => {
       console.log(error);
       response.send("server error");
     });
+
 };
 
 

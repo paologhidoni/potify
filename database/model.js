@@ -13,6 +13,7 @@ const createModelUser = (username, email, hashedPassword) => {
     });
 };
 
+//Manage sessions
 const createSession = (sid, data) => {
   const create_session =
     "INSERT INTO sessions (sid, data) VALUES ($1, $2) RETURNING sid";
@@ -21,7 +22,10 @@ const createSession = (sid, data) => {
     .then((result) => result.rows[0].sid); // returns sid value
 };
 
-// SIGNING IN ///////////////////////////////////////////////
+function deleteCurrSession(sid) {
+  const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
+  return db.query(DELETE_SESSION, [sid]);
+}
 
 // returns id, email, password, username
 function getUser(email) {
@@ -90,4 +94,13 @@ function getSession(sid) {
 // { username: 'Yoshi', post: 'Egg', imgsrc: 'url' }
 // ]
 
-module.exports = { createModelUser, createSession, getUser, getAllposts, getUserPosts, createPost, getSession };
+
+module.exports = {
+  createModelUser,
+  createSession,
+  getUser,
+  getUserPosts,
+  getAllposts,
+  deleteCurrSession,
+};
+
