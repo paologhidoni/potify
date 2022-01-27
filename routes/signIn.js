@@ -54,6 +54,13 @@ const post = (request, response) => {
     .then((sidValue) => {
       response.cookie("sid", sidValue, auth.COOKIE_OPTIONS);
       response.redirect("/profile");
+    })
+    .catch((error) => {
+      console.error(error);
+      response.send(`
+      <h1>Could not find the user</h1>
+      <a href="/" class="btn">Back Home</a>
+      `);
     });
 };
 
