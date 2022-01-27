@@ -7,8 +7,9 @@ const home = require("./routes/home.js");
 const signUp = require("./routes/signUp.js");
 const signIn = require("./routes/signIn.js");
 const signOut = require("./routes/signOut.js");
-const profile = require("./routes/profile.js");
+
 const allPosts = require("./routes/allPosts.js");
+const profile = require("./routes/profile.js");
 
 // bodyParser
 server.use(express.urlencoded({ extended: false }));
@@ -43,7 +44,11 @@ server.get("/allposts", allPosts.get);
 
 // log-out
 
-// create-post
+// add-post
+server.get("/profile", profile.get);
+server.post("/add-post", profile.post);
+
+
 
 // delete-post
 
