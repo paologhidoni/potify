@@ -10,7 +10,8 @@ const COOKIE_OPTIONS = {
 };
 
 
-// 02 step -create user
+// SIGNING UP ///////////////////////////////////////////////
+
 const createAuthUser = (username, email, password) => {
 
   return bcrypt.hash(password, 10)
@@ -19,41 +20,35 @@ const createAuthUser = (username, email, password) => {
 };
 
 
+// SIGNING UP AND SIGNING IN
 
-// // PART TWO: SIGNING UP - STEP 1
-// function createUser(email, password, name) {
-//   return bcrypt.hash(password, 10) // encrypts password
-//   .then((hash) => {
-//     return model.createUser(email, hash, name); // inserts a user in users table with email, encrypted password and name, then returns the user object
-//   });
-// }
+const saveUserSession = (user) => { // the user object
 
+  const sid = crypto.randomBytes(18).toString("base64");
 
+  return model.createSession(sid, { user }); // returns sid value
 
-// // PART TWO: SIGNING UP -STEP 2
-// function saveUserSession(user) {
-//   const sid = crypto.randomBytes(18).toString("base64");
-//   return model.createSession(sid, { user });
-// }
+}
 
 
 
+// SIGNING IN ///////////////////////////////////////////////
 
+function verifyUser(email, password) {
 
-// // PART THREE - logging in
+  return model
+    .getUser(email) // returns id, email, password, username
+    .then((user) => {
+      return bcrypt
+        .compare(password, user.password) // returns true or false
+        .then((match) => {
+          if(!match) {
+            throw new Error("user not found");
+          } else {
+            return user;
+          }
+        })
+    })
+}
 
-// function verifyUser(email, password) {
-//   return model.getUser(email)
-//   .then((user) => {
-//     return bcrypt.compare(password, user.password)
-//     .then((match) => {
-//       if(!match) {
-//         throw new Error("user not found");
-//       } else {
-//         return user;
-//       }
-//     })
-//   })
-// }
-
-module.exports = { COOKIE_OPTIONS, createAuthUser };
+module.exports = { COOKIE_OPTIONS, createAuthUser, saveUserSession, verifyUser };
