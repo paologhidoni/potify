@@ -12,7 +12,9 @@ const get = (request, response) => {
         <p class="post__message">${post.post}</p></li>`;
       });
 
-      return `<h1>Potify posts</h1><ul>${posts}</ul>`;
+      return `<h1>Potify posts</h1><ul>${posts}</ul><form action="/sign-out" method="POST">
+      <button>Sign out</button>
+    </form>`;
     })
     .then((result) => {
       response.send(result);
