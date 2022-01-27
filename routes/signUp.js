@@ -1,10 +1,7 @@
 const model = require("../database/model.js");
 const auth = require("../auth.js");
 
-
-
 const get = (request, response) => {
-
   let html = `
   
   <!DOCTYPE html>
@@ -17,7 +14,7 @@ const get = (request, response) => {
     <title>Potify - Sign Up</title>
   </head>
   <body>
-  
+    <h1>Sign up</h1>
     <div class="wrapper">
   
       <!-- sign up and sign in links section -->
@@ -48,9 +45,9 @@ const get = (request, response) => {
   </body>
   </html>
 
-  `
+  `;
   response.send(html);
-}
+};
 
 const post = (request, response) => {
   const { username, email, password } = request.body;
@@ -65,10 +62,9 @@ const post = (request, response) => {
       response.redirect("/profile");
     })
     .catch((error) => {
+      console.log(error);
       response.send("<h1>there was an issue signing up</h1>");
-    })
-
-}
+    });
+};
 
 module.exports = { get, post };
-

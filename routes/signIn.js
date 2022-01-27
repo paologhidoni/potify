@@ -2,7 +2,6 @@ const model = require("../database/model.js");
 const auth = require("../auth.js");
 
 const get = (request, response) => {
-
   let html = `
   
   <!DOCTYPE html>
@@ -15,7 +14,7 @@ const get = (request, response) => {
   <title>Potify - Sign In</title>
 </head>
 <body>
-
+  <h1>Sign in</h1>
   <div class="wrapper">
 
     <section class="links">
@@ -42,25 +41,20 @@ const get = (request, response) => {
 </body>
 </html>
 
-  `
+  `;
   response.send(html);
-}
-
+};
 
 const post = (request, response) => {
   const { email, password } = request.body;
 
-  auth.verifyUser(email, password) // returns the user
-  .then((user) => auth.saveUserSession(user)) // returns sid value
-  .then((sidValue) => {
-    response.cookie("sid", sidValue, auth.COOKIE_OPTIONS);
-    response.redirect("/profile");
-  })
-}
+  auth
+    .verifyUser(email, password) // returns the user
+    .then((user) => auth.saveUserSession(user)) // returns sid value
+    .then((sidValue) => {
+      response.cookie("sid", sidValue, auth.COOKIE_OPTIONS);
+      response.redirect("/profile");
+    });
+};
 
 module.exports = { get, post };
-
-
-
-
-
