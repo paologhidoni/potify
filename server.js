@@ -6,6 +6,8 @@ const server = express();
 const home = require("./routes/home.js");
 const signUp = require("./routes/signUp.js");
 const signIn = require("./routes/signIn.js");
+const profile = require("./routes/profile.js");
+const allPosts = require("./routes/allPosts.js");
 
 // bodyParser
 server.use(express.urlencoded({ extended: false }));
@@ -15,12 +17,8 @@ const cookieParser = require("cookie-parser");
 // COOKIE_SECRET is used to sign cookies so we can trust them
 server.use(cookieParser(process.env.COOKIE_SECRET));
 
-
-
 // static files set to public folder
 server.use(express.static("./public"));
-
-
 
 // ROUTES
 
@@ -34,25 +32,16 @@ server.post("/sign-up", signUp.post);
 // sign-in
 server.get("/sign-in", signIn.get);
 server.post("/sign-in", signIn.post);
+server.get("/profile", profile.get);
+
+//
+server.get("/allposts", allPosts.get);
 
 // log-out
-
-
 
 // create-post
 
 // delete-post
-
-
-
-
-
-
-
-
-
-
-
 
 // Port configuration
 const PORT = process.env.PORT || 3000;
