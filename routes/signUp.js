@@ -55,10 +55,18 @@ const get = (request, response) => {
 const post = (request, response) => {
   const { username, email, password } = request.body;
 
-  console.log(username, email, password);
+  // console.log(username, email, password);
 
-  auth.createAuthUser(username, email, password);
-
+  auth
+    .createAuthUser(username, email, password)
+    .then((user) => auth.saveUserSession(user))
+    .then((sid) => {
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      response.redirect("/profile");
+    })
+    .catch((error) => {
+      response.send("<h1>there was an issue signing up</h1>");
+    })
 
 }
 

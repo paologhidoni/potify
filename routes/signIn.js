@@ -1,4 +1,5 @@
 const model = require("../database/model.js");
+const auth = require("../auth.js");
 
 const get = (request, response) => {
 
@@ -45,7 +46,19 @@ const get = (request, response) => {
   response.send(html);
 }
 
-module.exports = { get };
+
+const post = (request, response) => {
+  const { email, password } = request.body;
+
+  auth.verifyUser(email, password) // returns the user
+  .then((user) => auth.saveUserSession(user)) // returns sid value
+  .then((sidValue) => {
+    response.cookie("sid", sidValue, auth.COOKIE_OPTIONS);
+    response.redirect("/profile");
+  })
+}
+
+module.exports = { get, post };
 
 
 
