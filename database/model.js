@@ -51,7 +51,7 @@ function getAllposts() {
 // Collecting user posts
 
 const getUserPosts = () => {
-  const SELECT_USER_POSTS = `SELECT users.username, posts.post, posts.imgSrc FROM users INNER JOIN posts ON users.email = posts.user_email;`
+  const SELECT_USER_POSTS = `SELECT users.username, posts.post, posts.imgSrc FROM users INNER JOIN posts ON users.email = posts.userEmail;`
 
   return db.query(SELECT_USER_POSTS).then((result) => {
     const userPosts = result.rows;
@@ -65,7 +65,7 @@ const getUserPosts = () => {
 
 
 const createPost = (username, comment, url, email) => {
-  const INSERT_POST = `INSERT INTO posts (username, post, imgSrc, user_email) VALUES($1, $2, $3, $4);`;
+  const INSERT_POST = `INSERT INTO posts (username, post, imgSrc, userEmail) VALUES($1, $2, $3, $4);`;
 
   console.log(username, comment, url, email);
 
@@ -102,5 +102,7 @@ module.exports = {
   getUserPosts,
   getAllposts,
   deleteCurrSession,
+  getSession,
+  createPost
 };
 

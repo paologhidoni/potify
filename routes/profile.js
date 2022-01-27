@@ -84,7 +84,7 @@ const post = (request, response) => {
   .then((result) => {
     console.log(result);
 
-    let sanitisedInputs = sanitise(request.body.comment, request.body.url, );
+    let sanitisedInputs = sanitise(request.body.comment, request.body.url);
 
     const [comment, url] = sanitisedInputs;
     console.log(result.user);
