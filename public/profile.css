@@ -11,6 +11,17 @@ body {
   width: 100%;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+form input {
+  margin: 1rem;
+}
+
 .user_posts {
   display: flex;
   flex-direction: row;

@@ -52,8 +52,6 @@ const get = (request, response) => {
 const post = (request, response) => {
   const { username, email, password } = request.body;
 
-  // console.log(username, email, password);
-
   auth
     .createAuthUser(username, email, password)
     .then((user) => auth.saveUserSession(user))

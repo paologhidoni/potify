@@ -9,7 +9,9 @@ const get = (request, response) => {
       const posts = result.map((post) => {
         console.log("after getall", post);
         return `<li><h2 class="post__user">${post.username}</h2>
-        <img src="${post.imgsrc}" class="post__image">    
+        <section class="container">
+        <img src="${post.imgsrc}">
+        </section>
         <p class="post__message">${post.post}</p></li>`;
       });
 
@@ -22,7 +24,7 @@ const get = (request, response) => {
           , initial-scale=1.0">
           <title>Document</title>
       </head>
-      <link rel="stylesheet" href="./public/profile.css">
+      <link rel="stylesheet" href="allPosts.css">
       <body>
           <section id="header">
       
