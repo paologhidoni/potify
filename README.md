@@ -15,7 +15,8 @@ An app to show off our plants.
   - run ` psql `
   - run ` \connect <name of your local database> `
   - run ` \dt ` to check the tables are there. There should be only one table named "reviews"
-  
+
+- Add your COOKIE_SECRET inside .env  
 - To start sever run command `npm run dev`
 - For cypress testing run command `npm run test`
 - Access locally on localhost:3000
