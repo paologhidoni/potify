@@ -6,12 +6,16 @@ const get = (request, response) => {
   model
     .getAllposts()
     .then((result) => {
-      const posts = result.map((post) => {
-        console.log("after getall", post);
-        return `<li><h2 class="post__user">${post.username}</h2>
-        <img src="${post.imgsrc}" class="post__image">    
+      const posts = result
+        .map((post) => {
+          return `<li><h2 class="post__user">${post.username}</h2>
+        <section class="container">
+        <img src="${post.imgsrc}">
+        </section>
         <p class="post__message">${post.post}</p></li>`;
-      });
+        })
+        .reverse()
+        .join("");
 
       return `<!DOCTYPE html>
       <html lang="en">
@@ -22,12 +26,12 @@ const get = (request, response) => {
           , initial-scale=1.0">
           <title>Document</title>
       </head>
-      <link rel="stylesheet" href="./public/profile.css">
+      <link rel="stylesheet" href="allPosts.css">
       <body>
           <section id="header">
       
         
-          <a href="/profile">Go back to your profile</a>
+          <a href="/profile"><button>Go back to your profile</button></a>
       
           <h1>Potify posts</h1>
       
@@ -41,6 +45,9 @@ const get = (request, response) => {
               <ul>${posts}</ul>
           </section>
       
+          <footer>
+          <img class="logo" src="/potify.png">
+          </footer>
       </body>
       </html>`;
     })

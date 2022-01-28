@@ -14,7 +14,8 @@ const get = (request, response) => {
   </head>
   <body>
   
-    <h1>Potify!</h1>
+    <img class="logo" src="/potify.png">
+    <h1>Welcome to potify</h1>
   
     <div class="wrapper">
   
