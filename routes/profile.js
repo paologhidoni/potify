@@ -16,18 +16,19 @@ function get(request, response) {
   </head>
   
   <header>
-  <a href="/allposts" >View All Posts</a>
+  <a href="/allposts" ><button>View All Posts</button></a>
         <h1>Hello ${session.user.email}</h1>
         <button>Log out</button>
   </header>
 
         <form action="/add-post" method="POST">
 
+           
+            <label for="url">Image URL</label>
+            <input class="url" type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required> 
+
             <label for="comment">Comment</label>
             <textarea name="comment" aria-label="Enter your comment" id="comment" cols="30" rows="5" required></textarea>
-
-            <label for="url">Image URL</label>
-            <input type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required> 
 
             <button type="submit" aria-label="click this button to send your post">Post your Plant</button>
 

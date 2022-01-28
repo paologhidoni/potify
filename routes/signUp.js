@@ -16,14 +16,7 @@ const get = (request, response) => {
   <body>
     <h1>Sign up</h1>
     <div class="wrapper">
-  
-      <!-- sign up and sign in links section -->
-      <section class="links">
-  
-        <a href="/" class="btn">Back to Home</a>
-  
-      </section>
-  
+
       <form action="/sign-up" method="POST">
   
         <label for="signup_username">Username</label>
@@ -36,6 +29,7 @@ const get = (request, response) => {
         <input type="password" name="password" id="password"> 
   
         <button type="submit">Sign Up</button>
+        <a href="/" class="btn">Back to Home</a>
   
       </form>
   
