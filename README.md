@@ -55,7 +55,7 @@ See it 👉🏻 [here](https://potify-fac23.herokuapp.com/)
 - Quality Assurance - Adam
 
 
-# Leanrings
+# Learnings
 * Learnt about where the value of the session and the session table lies 
 
 * Feeling more confident with modularisation and routes
