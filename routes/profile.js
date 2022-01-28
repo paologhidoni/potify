@@ -18,7 +18,7 @@ function get(request, response) {
   <header>
   <a href="/allposts" ><button>View All Posts</button></a>
         <h1>Hello ${session.user.email}</h1>
-        <button>Log out</button>
+        <form action="/sign-out" method="POST"><button type="submit">Sign Out</button></form>
   </header>
 
         <form action="/add-post" method="POST">
@@ -34,7 +34,7 @@ function get(request, response) {
 
           </form>
 
-          <form action="/sign-out" method="POST">
+         
           
         </form>
 </html>

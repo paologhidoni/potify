@@ -36,7 +36,7 @@ const get = (request, response) => {
           <h1>Potify posts</h1>
       
           <form action="/sign-out" method="POST">
-          <button>Sign out</button>
+          <button type="submit">Sign out</button>
           </form>
          
           </section>
