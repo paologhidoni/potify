@@ -7,8 +7,9 @@ const get = (request, response) => {
     .getAllposts()
     .then((result) => {
       const posts = result.map((post) => {
+        console.log("after getall", post);
         return `<li><h2 class="post__user">${post.username}</h2>
-        <img src="${post.imgSrc}" class="post__image">    
+        <img src="${post.imgsrc}" class="post__image">    
         <p class="post__message">${post.post}</p></li>`;
       });
 
@@ -25,9 +26,8 @@ const get = (request, response) => {
       <body>
           <section id="header">
       
-          <form action="/allposts" method="POST">
-          <button>Go back to your profile</button>
-          </form>
+        
+          <a href="/profile">Go back to your profile</a>
       
           <h1>Potify posts</h1>
       

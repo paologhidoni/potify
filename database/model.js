@@ -37,7 +37,6 @@ function getUser(email) {
 
 // GETTING POSTS ///////////////////////////////////////////////
 
-
 // Collecting all posts
 
 function getAllposts() {
@@ -51,18 +50,15 @@ function getAllposts() {
 // Collecting user posts
 
 const getUserPosts = () => {
-  const SELECT_USER_POSTS = `SELECT users.username, posts.post, posts.imgSrc FROM users INNER JOIN posts ON users.email = posts.userEmail;`
+  const SELECT_USER_POSTS = `SELECT users.username, posts.post, posts.imgSrc FROM users INNER JOIN posts ON users.email = posts.userEmail;`;
 
   return db.query(SELECT_USER_POSTS).then((result) => {
     const userPosts = result.rows;
     return userPosts;
   });
-}
-
+};
 
 // CREATING POSTS ///////////////////////////////////////////////
-
-
 
 const createPost = (username, comment, url, email) => {
   const INSERT_POST = `INSERT INTO posts (username, post, imgSrc, userEmail) VALUES($1, $2, $3, $4);`;
@@ -70,10 +66,7 @@ const createPost = (username, comment, url, email) => {
   console.log(username, comment, url, email);
 
   return db.query(INSERT_POST, [username, comment, url, email]);
-}
-
-
-
+};
 
 // GET SESSION DATA
 
@@ -94,7 +87,6 @@ function getSession(sid) {
 // { username: 'Yoshi', post: 'Egg', imgsrc: 'url' }
 // ]
 
-
 module.exports = {
   createModelUser,
   createSession,
@@ -103,6 +95,5 @@ module.exports = {
   getAllposts,
   deleteCurrSession,
   getSession,
-  createPost
+  createPost,
 };
-

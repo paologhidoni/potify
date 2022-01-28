@@ -48,8 +48,6 @@ server.get("/allposts", allPosts.get);
 server.get("/profile", profile.get);
 server.post("/add-post", profile.post);
 
-
-
 // delete-post
 
 // Port configuration
