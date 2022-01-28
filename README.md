@@ -54,10 +54,24 @@ See it 👉🏻 [here](https://potify-fac23.herokuapp.com/)
 - DevOps - Paolo
 - Quality Assurance - Adam
 
-## Co-authoring
 
+# Leanrings
+* Learnt about where the value of the session and the session table lies 
 
-Co-authored-by: Paolo <15671939+paologhidoni@users.noreply.github.com>
-Co-authored-by: Oli <78092825+duckRabbitPy@users.noreply.github.com>
-Co-authored-by: Adam <31065348+adam8-9@users.noreply.github.com> 
+* Feeling more confident with modularisation and routes
 
+---
+
+* The importance of Server-side Authentication
+
+----
+
+* Understanding the scope of the project and how to break down tasks into managable chunks.
+
+----
+
+* Ask for help at the right time
+
+----
+
+* Start with a MVP
