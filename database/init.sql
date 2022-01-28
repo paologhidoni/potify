@@ -19,7 +19,7 @@ CREATE TABLE posts (
   username varchar(20),
   post TEXT,
   imgSrc TEXT,
-  userEmail TEXT UNIQUE NOT NULL REFERENCES users(email)
+  userEmail TEXT
 );
 
 INSERT INTO users (email, password, username) VALUES (
@@ -33,8 +33,7 @@ INSERT INTO sessions (sid, data) VALUES (
   '{"name": "Luigi", "age": 20}'
 );
 
-INSERT INTO posts (id, username, post, imgSrc, userEmail) VALUES (
-  1,
+INSERT INTO posts (username, post, imgSrc, userEmail) VALUES (
   'Mario',
   'What a beautiful day',
   'https://cdn.thestem.co.uk/production/imager-transforms/digitaloceanspaces/product-images/plants/big-leaf-monstera/133375/swiss-cheese-plant-big-leaf-in-grey-lisbon-plant-pot_c6832acb27c72430f782d679cd672ef1.webp',

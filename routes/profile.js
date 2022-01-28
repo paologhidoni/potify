@@ -1,7 +1,5 @@
 const model = require("../database/model.js");
 
-
-
 function get(request, response) {
   const sid = request.signedCookies.sid;
   if (sid) {
@@ -36,9 +34,6 @@ function get(request, response) {
   }
 }
 
-
-
-
 // const get = (request, response) => {
 
 //   model
@@ -48,13 +43,13 @@ function get(request, response) {
 //         return `
 //         <li>
 //           <h2 class="post__user">${post.username}</h2>
-//           <img src="${post.imgSrc}" class="post__image">    
+//           <img src="${post.imgSrc}" class="post__image">
 //           <p class="post__message">${post.post}</p>
 //         </li>`;
 //       });
 
 //       return `
-      
+
 //       <!DOCTYPE html>
 //       <html lang="en">
 //       <head>
@@ -80,7 +75,7 @@ function get(request, response) {
 //             <textarea name="comment" aria-label="Enter your comment" id="comment" cols="30" rows="5" required></textarea>
 
 //             <label for="url">Image URL</label>
-//             <input type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required> 
+//             <input type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required>
 
 //             <button type="submit" aria-label="click this button to send your post">Post your Plant</button>
 
@@ -89,7 +84,7 @@ function get(request, response) {
 //           <ul class="user-posts">${userPosts}</ul>
 
 //         </div>
-        
+
 //       </body>
 //       </html>
 
@@ -105,8 +100,6 @@ function get(request, response) {
 
 // };
 
-
-
 // function to sanitise the user inputs
 function sanitise(...inputArr) {
   return inputArr.map((inputStr) => {
@@ -114,33 +107,32 @@ function sanitise(...inputArr) {
   });
 }
 
-
 const post = (request, response) => {
-
   const sid = request.signedCookies.sid;
 
-  model.getSession(sid)
-  .then((result) => {
-    console.log(result);
+  model
+    .getSession(sid)
+    .then((result) => {
+      console.log(result);
 
-    let sanitisedInputs = sanitise(request.body.comment, request.body.url);
+      let sanitisedInputs = sanitise(request.body.comment, request.body.url);
 
-    const [comment, url] = sanitisedInputs;
-    // console.log(result.user);
-    model.createPost(result.user.username, comment, url, result.user.email)
-    .then(() => {
-      response.redirect("/allPosts");
-    })  
-  })
-  .catch((error) => {
-    console.log(error)
-    response.send("<h1>Error!</h1>")
-  })
+      const [comment, url] = sanitisedInputs;
+      // console.log(result.user);
+      model
+        .createPost(result.user.username, comment, url, result.user.email)
+        .then(() => {
+          response.redirect("/allPosts");
+        })
+        .catch((error) => {
+          console.log(error);
+          response.send("<h1>Error!</h1>");
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+      response.send("<h1>Error!</h1>");
+    });
+};
 
-}
-
-
-
-
-
-module.exports = { get, post }
+module.exports = { get, post };

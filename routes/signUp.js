@@ -63,7 +63,9 @@ const post = (request, response) => {
     })
     .catch((error) => {
       console.log(error);
-      response.send("<h1>there was an issue signing up</h1>");
+      response.send(
+        "<h1>there was an issue signing up</h1></br><a href='/'>Home</a>"
+      );
     });
 };
 

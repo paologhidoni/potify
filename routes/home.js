@@ -1,7 +1,6 @@
 const model = require("../database/model.js");
 
 const get = (request, response) => {
-
   let html = `
   
   <!DOCTYPE html>
@@ -27,28 +26,14 @@ const get = (request, response) => {
   
       </section>
   
-  
-      <!-- Posts section -->
-      <ul class="posts">
-  
-        <li class="post">
-         
-          <h2 class="post__user">User</h2>
-          <div class="post__image"></div>      
-          <p class="post__message"></p>
-          
-        </li>
-  
-      </ul>
-  
+
     </div>
     
   </body>
   </html>
 
-  `
+  `;
   response.send(html);
-}
-
+};
 
 module.exports = { get };
