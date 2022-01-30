@@ -6,7 +6,7 @@ See it 👉🏻 [here](https://potify-fac23.herokuapp.com/)
 
 # How to install
 
-- Git clone https://github.com/fac-23/week3-oli-adam-paolo
+- Git clone https://github.com/paologhidoni/potify
 - Run command `npm install` in terminal
 
 ## Local Database Setup
