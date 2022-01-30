@@ -2,6 +2,8 @@ const db = require("./connection.js");
 
 // SIGNING UP ///////////////////////////////////////////////
 
+
+// Inserts user inside users table and returns an object with the same data we just inserted (username, email, haskedPassword)
 const createModelUser = (username, email, hashedPassword) => {
   const create_user =
     "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING username, email, password";
@@ -13,27 +15,58 @@ const createModelUser = (username, email, hashedPassword) => {
     });
 };
 
-//Manage sessions
-const createSession = (sid, data) => {
+
+
+// Receives a sid and a user object, inserts a new session inside the sessions table with 2 columns: sid and the user data, then returns the value associated to the sid key (in the result.rows[0] object)
+const createSession = (sid, user) => {
   const create_session =
     "INSERT INTO sessions (sid, data) VALUES ($1, $2) RETURNING sid";
   return db
-    .query(create_session, [sid, data])
-    .then((result) => result.rows[0].sid); // returns sid value
+    .query(create_session, [sid, user])
+    .then((result) => {
+      // console.log(result.rows);
+      return result.rows[0].sid
+      
+    }); // returns sid value
 };
 
+
+
+
+
+
+// SIGNING IN ///////////////////////////////////////////////
+
+// Looks up the user in the users table by matching the password entered by the user and the one stored, then returns a user object containing id, email, password, username
+function getUser(email) {
+  const SELECT_USER = `
+      SELECT id, email, password, username FROM users WHERE email=$1
+    `;
+  return db.query(SELECT_USER, [email]).then((result) => {
+
+    console.log(result.rows[0]);
+    return result.rows[0];
+  
+  });
+}
+
+
+
+
+// SIGNING OUT ///////////////////////////////////////////////
+
+
+// Delete the session with the specified sid from the sessions table
 function deleteCurrSession(sid) {
   const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
   return db.query(DELETE_SESSION, [sid]);
 }
 
-// returns id, email, password, username
-function getUser(email) {
-  const SELECT_USER = `
-      SELECT id, email, password, username FROM users WHERE email=$1
-    `;
-  return db.query(SELECT_USER, [email]).then((result) => result.rows[0]);
-}
+
+
+
+
+
 
 // GETTING POSTS ///////////////////////////////////////////////
 
@@ -58,6 +91,8 @@ const getUserPosts = () => {
   });
 };
 
+
+
 // CREATING POSTS ///////////////////////////////////////////////
 
 const createPost = (username, comment, url, email) => {
@@ -67,6 +102,8 @@ const createPost = (username, comment, url, email) => {
 
   return db.query(INSERT_POST, [username, comment, url, email]);
 };
+
+
 
 // GET SESSION DATA
 

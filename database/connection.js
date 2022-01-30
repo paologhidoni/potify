@@ -9,11 +9,9 @@ if (!DB_URL) {
   throw new Error("Please set the DATABASE_URL environment variable");
 }
 
+// connects to out local database
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
 });
 
 module.exports = db;

@@ -1,7 +1,7 @@
 const model = require("../database/model.js");
 
 const get = (request, response) => {
-  const sid = request.signedCookies.sid;
+  // const sid = request.signedCookies.sid;
 
   model
     .getAllposts()

@@ -16,31 +16,33 @@ function get(request, response) {
   </head>
   
   <header>
-  <a href="/allposts" ><button>View All Posts</button></a>
-        <h1>Hello ${session.user.email}</h1>
-        <form action="/sign-out" method="POST"><button type="submit">Sign Out</button></form>
+    <a href="/allposts" ><button>View All Posts</button></a>
+
+    <h1>Hello ${session.user.email}</h1>
+
+    <form action="/sign-out" method="POST">
+      <button type="submit">Sign Out</button>
+    </form>
+
   </header>
 
-        <form action="/add-post" method="POST">
+  <form action="/add-post" method="POST">
+ 
+    <label for="url">Image URL</label>
+    <input class="url" type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required> 
 
-           
-            <label for="url">Image URL</label>
-            <input class="url" type="text" aria-label="Enter a url to display an image of your plant" name="url" id="url" required> 
+    <label for="comment">Comment</label>
+    <textarea name="comment" aria-label="Enter your comment" id="comment" cols="30" rows="5" required></textarea>
 
-            <label for="comment">Comment</label>
-            <textarea name="comment" aria-label="Enter your comment" id="comment" cols="30" rows="5" required></textarea>
+    <button type="submit" aria-label="click this button to send your post">Post your Plant</button>
 
-            <button type="submit" aria-label="click this button to send your post">Post your Plant</button>
-
-          </form>
-
-         
+  </form>
           
-        </form>
 </html>
       `);
     });
-  } else {
+
+  } else { // If no sid is found 
     response.send(`
     <h1>Hello anonymous</h1>
     <a href="/sign-up">Sign up</a>

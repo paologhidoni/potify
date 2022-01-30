@@ -20,16 +20,15 @@ const get = (request, response) => {
     <form action="/sign-in" method="POST">
 
       <label for="signIn_Email">Email</label>
-      <input type="email" name="email" id="signIn_Email">
+      <input type="email" name="email" id="signIn_Email" aria-label="Enter your email">
 
       <label for="signIn_Password">Password</label>
-      <input type="password" name="password" id="signIn_Password"> 
+      <input type="password" name="password" id="signIn_Password" aria-label="Enter your password"> 
 
-      <button type="submit">Sign In</button>
+      <button type="submit" aria-label="Click this button to sign in">Sign In</button>
       <a href="/" class="btn">Back to Home</a>
 
     </form>
-
 
   </div>
   
@@ -45,7 +44,7 @@ const post = (request, response) => {
 
   auth
     .verifyUser(email, password) // returns the user
-    .then((user) => auth.saveUserSession(user)) // returns sid value
+    .then((user) => auth.saveUserSession(user)) // saves the session in the session table and returns sid value
     .then((sidValue) => {
       response.cookie("sid", sidValue, auth.COOKIE_OPTIONS);
       response.redirect("/profile");
